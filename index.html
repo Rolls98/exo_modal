@@ -57,13 +57,16 @@
                     test.classList.toggle("modal");
                     test.classList.toggle("nomodal");
 
-                    if (test.classList.contains("nomodal")) {
 
-                        form.style.marginTop = "-800px";
+                    if (test.classList.contains("nomodal")) {
+                        test.style.opacity = 0;
+                        form.style.marginTop = "-600px";
                         setTimeout(function () {
-                            test.style.display = "none";
+                            form.style.opacity = 0;
                         }, 100);
                     } else {
+                        test.style.opacity = 1;
+                        form.style.opacity = 1;
                         form.style.marginTop = "50px";
                     }
                 }, 100);
