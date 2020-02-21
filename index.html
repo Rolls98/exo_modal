@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal HTML&CSS&JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="part_btn">
+        <button id="btn">Clique moi</button>
+    </div>
+    <div class="nomodal" id="test">
+        <div class="part_form">
+            <form action="" class="form">
+                <label for="">Nom : </label><br>
+                <input type="text" name="nom" placeholder="Entez votre nom"><br>
+                <label for="">Prenom : </label><br>
+                <input type="text" name="prenom" placeholder="Entrez votre prenom"><br>
+                <button id="btn_valid">Valider</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var modal = document.getElementById("test");
+        var form = document.querySelector(".part_form");
+        var value = false;
+
+        function compare_id(id_e_target, el) {
+
+            for (var i = 0; i < el.children.length; i++) {
+                if (id_e_target == el.children[i]) {
+                    value = true;
+                }
+                if (el.children[i].children.length) {
+                    return compare_id(id_e_target, el.children[i]);
+                }
+
+            }
+
+            return value;
+        }
+
+        document.body.addEventListener("click", function (e) {
+            if (compare_id(e.target, modal)) {
+                // test.style.display = "block";
+
+                // alert("hello");
+                value = false;
+            } else {
+                test.style.display = "block";
+                setTimeout(function () {
+                    test.classList.toggle("modal");
+                    test.classList.toggle("nomodal");
+
+                    if (test.classList.contains("nomodal")) {
+
+                        form.style.marginTop = "-800px";
+                        setTimeout(function () {
+                            test.style.display = "none";
+                        }, 100);
+                    } else {
+                        form.style.marginTop = "50px";
+                    }
+                }, 100);
+
+            }
+        })
+    </script>
+</body>
+
+</html>
